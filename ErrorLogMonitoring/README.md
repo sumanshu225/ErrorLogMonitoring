@@ -1,18 +1,28 @@
-## Getting Started
+# Requirements
+`DockerFile could not be created because no java version of required version was available`    
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Java 22.0.1 
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
+## Commands to Run
+- Install the JDK from the [link](https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.exe)
+- Clone the repositorty
+- Provide correct path to `INPUT_FILE_NAME` and `OUTPUT_FILE_NAME` inside [App.java](https://github.com/sumanshu225/ErrorLogMonitoring/blob/main/ErrorLogMonitoring/src/App.java)
+  
+  ![image](https://github.com/sumanshu225/ErrorLogMonitoring/assets/86718491/cf8f77a2-d523-4b83-b0a1-2d153ce8c252)
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+ - Go inside ErrorLogMonitoring and run the following commands
+   
+   ```bash
+      javac -d bin -cp "lib/*" src/*.java src/mypackage/*.java
+      cd bin
+      java -cp ".;../lib/*" App 
+    ```
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- `Sucessful` message will be displayed in cmd
+-  Check `output.txt` inside src folder
+  
+![Screenshot 2024-05-25 192116](https://github.com/sumanshu225/ErrorLogMonitoring/assets/86718491/af9ae4a0-e252-4f9c-9f90-539aaac5e147)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).

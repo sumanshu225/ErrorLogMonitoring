@@ -1,5 +1,5 @@
 # Requirements
-`DockerFile could not be created because no java version of required version was available`    
+> DockerFile could not be created because no java version of required version was available    
 
 Java 22.0.1 
 
@@ -24,5 +24,13 @@ Java 22.0.1
   
 ![Screenshot 2024-05-25 192116](https://github.com/sumanshu225/ErrorLogMonitoring/assets/86718491/af9ae4a0-e252-4f9c-9f90-539aaac5e147)
 
-
-
+## Approach
+- We have a [LogTypeManager](https://github.com/sumanshu225/ErrorLogMonitoring/blob/main/ErrorLogMonitoring/src/mypackage/LogTypeManager.java) for each Log Type and a speacial Type `ALL`. This class is responsible for inserting data and making queries.
+- Inside LogTypeManager we have methods for
+  - `add()` for queryType 1 which takes O(N) time in worst case.
+  - `get()` for queryType 2 which takes O(1) time.
+  - `getBefore(long timeStamp)` for queryType 3&4 which takes O(1) time.
+  - `getAfter(long timeStamp)` for queryType 3&4 which takes O(1) time.
+- Inside LogTypeManager we maintain a `prefixStats`*(responsible for before query)* and `suffixStats`*(responsible for after query)* List
+  - When inserting a new element prefix stats enter new node with `min`, `max`, `sum` by looking just previous value takes *O(1)* time
+  - When inserting a new element suffix stats enter a new node with `min`, `max`, `sum` equal to severity and we update previous values by going backwards takes *O(N)* time.
